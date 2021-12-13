@@ -30,10 +30,10 @@ public class ReservationController {
     }
 
     @PostMapping
-    public Reservation addReservation(@RequestBody Reservation reservation){
-        return reservationService.addReservation(reservation);
+    public Reservation addReservation(@RequestBody Form form){
+        System.out.println(form.getUser_id());
+        return reservationService.addReservation(form.getReservation(),form.getUser_id(),form.getTable_id());
     }
-
 
 
 }

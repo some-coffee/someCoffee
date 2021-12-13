@@ -25,11 +25,13 @@ public class TableController {
 
     @GetMapping("/{id}")
     public CoffeeTable getTable(@PathVariable String id){
+
         return tableService.getTable(id);
     }
 
     @PostMapping
     public CoffeeTable addTable(@RequestBody CoffeeTable coffeeTable){
+
         return tableService.addTable(coffeeTable);
     }
 }
