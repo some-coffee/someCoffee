@@ -49,7 +49,7 @@ function SignUp() {
     setConfirmPassword(e.target.value);
   };
 
-  const checkPassword = () => {
+  const check = () => {
     if (password !== confirmPassword) console.log("pass word does not match");
   };
 
@@ -136,7 +136,7 @@ function SignUp() {
           required
         ></input>
         <br />
-        <button onClick={checkPassword}>Sign up</button>
+        <button onClick={check}>Sign up</button>
       </form>
     </div>
   );

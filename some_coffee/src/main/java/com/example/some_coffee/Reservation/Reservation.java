@@ -21,13 +21,11 @@ public class Reservation {
     User user;
 
 
-
-
-
     public Reservation(Long reservation_id, String reservation_date, String reservation_time) {
         this.reservation_id = reservation_id;
         this.reservation_date = reservation_date;
         this.reservation_time = reservation_time;
+
     }
 
     public Reservation(){
