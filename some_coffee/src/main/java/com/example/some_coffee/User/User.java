@@ -1,12 +1,13 @@
 package com.example.some_coffee.User;
 
 
+import com.example.some_coffee.Role.Role;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 public class User {
@@ -21,6 +22,8 @@ public class User {
     private int phone;
     private String email;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Role> roles = new ArrayList<>();
 
     public User() {
 
@@ -35,6 +38,7 @@ public class User {
         this.phone = phone;
         this.email = email;
     }
+
 
     public Long getUser_id() {
         return user_id;
@@ -91,4 +95,14 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+
 }
