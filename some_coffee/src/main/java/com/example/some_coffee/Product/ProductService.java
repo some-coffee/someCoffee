@@ -29,4 +29,22 @@ public class ProductService {
         return productRepository.save(product);
     }
 
+    public void deleteProduct(String id) {
+        Long product_id = Long.parseLong(id);
+        productRepository.deleteById(product_id);
+    }
+
+    public void updateProduct(String id, Product data) {
+        Long product_id = Long.parseLong(id);
+        Product product = productRepository.findById(product_id).orElse(null);
+
+
+        if (product != null) {
+            product.setName(data.getName());
+            product.setPrice(data.getPrice());
+            product.setCategory(data.getCategory());
+            productRepository.save(product);
+        }
+    }
+
 }
