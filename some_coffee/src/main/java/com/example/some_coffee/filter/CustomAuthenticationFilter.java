@@ -20,14 +20,15 @@ import java.util.Date;
 import java.util.stream.Collectors;
 import java.util.HashMap;
 import java.util.Map;
+
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    public final AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
-    public CustomAuthenticationFilter(AuthenticationManager authenticationManager){
-        this.authenticationManager=authenticationManager;
+    public CustomAuthenticationFilter(AuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
     }
 
     @Override
@@ -46,12 +47,12 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
         String username = user.getUser_name();
         String password = user.getPassword();
 
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username,password);
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password);
         return authenticationManager.authenticate(authenticationToken);
     }
 
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
-        User user = (User)authentication.getPrincipal();
+        User user = (User) authentication.getPrincipal();
         Algorithm algorithm = Algorithm.HMAC256("jwt_super_secret".getBytes());
         String access_token = JWT.create()
                 .withSubject(user.getUsername())

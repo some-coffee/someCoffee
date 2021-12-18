@@ -13,8 +13,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
 import static org.springframework.http.HttpMethod.POST;
 
 @Configuration
@@ -41,9 +41,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         // Define the authorization patterns below 444849
-       http.authorizeRequests().antMatchers(POST, "/login/**").permitAll();
-        http.authorizeRequests().antMatchers(POST,"/user/").permitAll();
-        http.authorizeRequests().antMatchers(POST,"/role/").permitAll();
+        http.authorizeRequests().antMatchers(POST, "/login/**").permitAll();
+        http.authorizeRequests().antMatchers(POST, "/user/").permitAll();
+        http.authorizeRequests().antMatchers(POST, "/role/").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
@@ -51,10 +51,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception{
+    public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-
 
 
 }

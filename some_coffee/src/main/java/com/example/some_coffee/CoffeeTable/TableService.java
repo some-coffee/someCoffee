@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class TableService {
     private TableRepository tableRepository;
@@ -14,17 +15,17 @@ public class TableService {
         this.tableRepository = tableRepository;
     }
 
-    public List<CoffeeTable>getTables(){
+    public List<CoffeeTable> getTables() {
 
         return tableRepository.findAll();
     }
 
-    public CoffeeTable getTable(String id){
-        Long table_id=Long.parseLong(id);
+    public CoffeeTable getTable(String id) {
+        Long table_id = Long.parseLong(id);
         return tableRepository.findById(table_id).orElse(null);
     }
 
-    public CoffeeTable addTable(CoffeeTable coffeeTable){
+    public CoffeeTable addTable(CoffeeTable coffeeTable) {
 
         return tableRepository.save(coffeeTable);
     }

@@ -1,4 +1,5 @@
 package com.example.some_coffee.filter;
+
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -17,24 +18,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static java.util.Arrays.stream;
-import static org.springframework.http.HttpStatus.FORBIDDEN;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+import static org.springframework.http.HttpStatus.FORBIDDEN;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class CustomAuthorizationFilter extends OncePerRequestFilter{
+public class CustomAuthorizationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        if(request.getServletPath().equals("/login")){
-            filterChain.doFilter(request,response);
-        }else{
+        if (request.getServletPath().equals("/login")) {
+            filterChain.doFilter(request, response);
+        } else {
             String authorizationHeader = request.getHeader(AUTHORIZATION);
-            if(authorizationHeader != null && authorizationHeader.startsWith("Bearer ")){
-                try{
-                    String token =  authorizationHeader.substring("Bearer ".length());
+            if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+                try {
+                    String token = authorizationHeader.substring("Bearer ".length());
                     Algorithm algorithm = Algorithm.HMAC256("jwt_super_secret".getBytes());
                     JWTVerifier verifier = JWT.require(algorithm).build();
                     DecodedJWT decodedJWT = verifier.verify(token);
@@ -47,8 +48,8 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter{
                     UsernamePasswordAuthenticationToken authenticationToken =
                             new UsernamePasswordAuthenticationToken(email, null, authorities);
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-                    filterChain.doFilter(request,response);
-                }catch (Exception exception){
+                    filterChain.doFilter(request, response);
+                } catch (Exception exception) {
                     response.setHeader("error", exception.getMessage());
                     response.setStatus(FORBIDDEN.value());
                     //response.sendError(FORBIDDEN.value());
@@ -58,8 +59,8 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter{
                     new ObjectMapper().writeValue(response.getOutputStream(), error);
                 }
 
-            }else{
-                filterChain.doFilter(request,response);
+            } else {
+                filterChain.doFilter(request, response);
             }
         }
     }

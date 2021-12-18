@@ -18,18 +18,18 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<Product>getProducts(){
-          return productService.getProducts();
+    public List<Product> getProducts() {
+        return productService.getProducts();
 
     }
 
     @GetMapping("/{id}")
-    public Product getProduct(@PathVariable String id){
+    public Product getProduct(@PathVariable String id) {
         return productService.getProduct(id);
     }
 
     @PostMapping
-    public Product addProduct(@RequestBody Product product){
+    public Product addProduct(@RequestBody Product product) {
 
         return productService.addProduct(product);
     }
