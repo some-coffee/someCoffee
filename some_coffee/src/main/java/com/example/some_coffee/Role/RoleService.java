@@ -13,7 +13,7 @@ public class RoleService {
         this.roleRepository = roleRepository;
     }
 
-    public Role saveRole(Role role){
+    public Role saveRole(Role role) {
         return roleRepository.save(role);
     }
 }

@@ -7,27 +7,28 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping(path= "user")
+@RequestMapping(path = "user")
 public class UserController {
 
     private final UserService userService;
+
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
     @GetMapping
-    public List<User>getUsers(){
+    public List<User> getUsers() {
         return userService.getUsers();
     }
 
     @GetMapping("/{id}")
-    public User getUser(@PathVariable String id){
+    public User getUser(@PathVariable String id) {
         return userService.getUser(id);
     }
 
     @PostMapping
-    public User addUser(@RequestBody Form form){
+    public User addUser(@RequestBody Form form) {
         return userService.addUser(form);
     }
 }

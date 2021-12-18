@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-public class UserService  implements UserDetailsService{
+public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -23,7 +23,7 @@ public class UserService  implements UserDetailsService{
 
 
     @Autowired
-    public UserService( UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
@@ -32,7 +32,7 @@ public class UserService  implements UserDetailsService{
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User user = userRepository.findByUser_name(userName);
-        if(user  == null){
+        if (user == null) {
             throw new UsernameNotFoundException("User not found in the database");
         }
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
@@ -52,14 +52,15 @@ public class UserService  implements UserDetailsService{
         return userRepository.findById(user_id).orElse(null);
     }
 
-    public User addUser(Form form) {
-        User user = form.getUser();
-        Long role_id = form.getRole_id();
-        Role role = roleRepository.findById(role_id).orElse(null);
 
+    public User addUser(Form form) {
+
+        User user = form.getUser();
+        Long roleId = form.getRole_id();
+        Role role = roleRepository.findById(roleId).orElse(null);
         user.getRoles().add(role);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-
         return userRepository.save(user);
+
     }
 }

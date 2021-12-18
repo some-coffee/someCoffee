@@ -1,4 +1,5 @@
 package com.example.some_coffee.Reservation;
+
 import com.example.some_coffee.CoffeeTable.CoffeeTable;
 import com.example.some_coffee.User.User;
 
@@ -28,7 +29,7 @@ public class Reservation {
 
     }
 
-    public Reservation(){
+    public Reservation() {
 
     }
 

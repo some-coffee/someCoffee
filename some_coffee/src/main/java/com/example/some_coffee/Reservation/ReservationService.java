@@ -17,26 +17,26 @@ public class ReservationService {
     private TableRepository tableRepository;
 
     @Autowired
-    public ReservationService(ReservationRepository reservationRepository,UserRepository userRepository,TableRepository tableRepository ) {
+    public ReservationService(ReservationRepository reservationRepository, UserRepository userRepository, TableRepository tableRepository) {
         this.reservationRepository = reservationRepository;
-        this.userRepository=userRepository;
-        this.tableRepository=tableRepository;
+        this.userRepository = userRepository;
+        this.tableRepository = tableRepository;
 
     }
 
-    public List<Reservation>getReservations(){
+    public List<Reservation> getReservations() {
         return reservationRepository.findAll();
     }
 
-    public Reservation getReservation(String id){
-        Long reservation_id=Long.parseLong(id);
+    public Reservation getReservation(String id) {
+        Long reservation_id = Long.parseLong(id);
         return reservationRepository.findById(reservation_id).orElse(null);
     }
 
-    public Reservation addReservation(Reservation reservation ,Long user_id, Long table_id){
-        User user =(User) userRepository.findById(user_id).orElse(null);
+    public Reservation addReservation(Reservation reservation, Long user_id, Long table_id) {
+        User user = (User) userRepository.findById(user_id).orElse(null);
         reservation.setUser(user);
-        CoffeeTable coffeeTable=(CoffeeTable)tableRepository.findById(table_id).orElse(null);
+        CoffeeTable coffeeTable = (CoffeeTable) tableRepository.findById(table_id).orElse(null);
         reservation.setCoffeeTable(coffeeTable);
         return reservationRepository.save(reservation);
     }

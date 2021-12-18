@@ -15,17 +15,17 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public List<Product> getProducts(){
+    public List<Product> getProducts() {
 
         return productRepository.findAll();
     }
 
-    public Product getProduct(String id){
-        Long product_id=Long.parseLong(id);
+    public Product getProduct(String id) {
+        Long product_id = Long.parseLong(id);
         return productRepository.findById(product_id).orElse(null);
     }
 
-    public Product addProduct(Product product){
+    public Product addProduct(Product product) {
         return productRepository.save(product);
     }
 

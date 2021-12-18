@@ -8,7 +8,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(path= "reservation")
+@RequestMapping(path = "reservation")
 public class ReservationController {
 
     private final ReservationService reservationService;
@@ -19,20 +19,20 @@ public class ReservationController {
     }
 
     @GetMapping
-    public List<Reservation>getReservations(){
+    public List<Reservation> getReservations() {
         return reservationService.getReservations();
     }
 
     @GetMapping("/{id}")
-    public Reservation getReservation(@PathVariable String id){
+    public Reservation getReservation(@PathVariable String id) {
 
         return reservationService.getReservation(id);
     }
 
     @PostMapping
-    public Reservation addReservation(@RequestBody Form form){
+    public Reservation addReservation(@RequestBody Form form) {
         System.out.println(form.getUser_id());
-        return reservationService.addReservation(form.getReservation(),form.getUser_id(),form.getTable_id());
+        return reservationService.addReservation(form.getReservation(), form.getUser_id(), form.getTable_id());
     }
 
 
