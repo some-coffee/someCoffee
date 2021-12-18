@@ -34,4 +34,14 @@ public class TableController {
 
         return tableService.addTable(coffeeTable);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteTable(@PathVariable String id) {
+        tableService.deleteTable(id);
+    }
+
+    @PutMapping("/{id}")
+    public void updateTable(@PathVariable String id, @RequestBody CoffeeTable data) {
+        tableService.updateSection(id, data);
+    }
 }

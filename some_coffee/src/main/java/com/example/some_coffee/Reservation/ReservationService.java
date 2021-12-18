@@ -41,5 +41,24 @@ public class ReservationService {
         return reservationRepository.save(reservation);
     }
 
+    public void deleteReservation(String id) {
+        Long reservation_id = Long.parseLong(id);
+        reservationRepository.deleteById(reservation_id);
+    }
+
+    public void updateReservation(String id, Reservation data) {
+        Long reservation_id = Long.parseLong(id);
+        Reservation reservation = reservationRepository.findById(reservation_id).orElse(null);
+
+
+        if (reservation != null) {
+            reservation.setReservation_date(data.getReservation_date());
+            reservation.setReservation_time(data.getReservation_time());
+
+            reservationRepository.save(reservation);
+        }
+
+    }
+
 
 }

@@ -1,6 +1,6 @@
 package com.example.some_coffee.Reservation;
 
-import com.example.some_coffee.Product.Product;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,6 +33,16 @@ public class ReservationController {
     public Reservation addReservation(@RequestBody Form form) {
         System.out.println(form.getUser_id());
         return reservationService.addReservation(form.getReservation(), form.getUser_id(), form.getTable_id());
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteReservation(@PathVariable String id) {
+        reservationService.deleteReservation(id);
+    }
+
+    @PutMapping("/{id}")
+    public void updateReservation(@PathVariable String id, @RequestBody Reservation data) {
+        reservationService.updateReservation(id, data);
     }
 
 
