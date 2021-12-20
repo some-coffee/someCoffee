@@ -12,9 +12,9 @@ import java.util.List;
 @Service
 public class ReservationService {
 
-    private ReservationRepository reservationRepository;
-    private UserRepository userRepository;
-    private TableRepository tableRepository;
+    private final ReservationRepository reservationRepository;
+    private final UserRepository userRepository;
+    private final TableRepository tableRepository;
 
     @Autowired
     public ReservationService(ReservationRepository reservationRepository, UserRepository userRepository, TableRepository tableRepository) {
@@ -29,31 +29,31 @@ public class ReservationService {
     }
 
     public Reservation getReservation(String id) {
-        Long reservation_id = Long.parseLong(id);
-        return reservationRepository.findById(reservation_id).orElse(null);
+        Long reservationId = Long.parseLong(id);
+        return reservationRepository.findById(reservationId).orElse(null);
     }
 
-    public Reservation addReservation(Reservation reservation, Long user_id, Long table_id) {
-        User user = (User) userRepository.findById(user_id).orElse(null);
+    public Reservation addReservation(Reservation reservation, Long userId, Long tableId) {
+        User user = (User) userRepository.findById(userId).orElse(null);
         reservation.setUser(user);
-        CoffeeTable coffeeTable = (CoffeeTable) tableRepository.findById(table_id).orElse(null);
+        CoffeeTable coffeeTable = (CoffeeTable) tableRepository.findById(tableId).orElse(null);
         reservation.setCoffeeTable(coffeeTable);
         return reservationRepository.save(reservation);
     }
 
     public void deleteReservation(String id) {
-        Long reservation_id = Long.parseLong(id);
-        reservationRepository.deleteById(reservation_id);
+        Long reservationId = Long.parseLong(id);
+        reservationRepository.deleteById(reservationId);
     }
 
     public void updateReservation(String id, Reservation data) {
-        Long reservation_id = Long.parseLong(id);
-        Reservation reservation = reservationRepository.findById(reservation_id).orElse(null);
+        Long reservationId = Long.parseLong(id);
+        Reservation reservation = reservationRepository.findById(reservationId).orElse(null);
 
 
         if (reservation != null) {
-            reservation.setReservation_date(data.getReservation_date());
-            reservation.setReservation_time(data.getReservation_time());
+            reservation.setReservationDate(data.getReservationDate());
+            reservation.setReservationTime(data.getReservationTime());
 
             reservationRepository.save(reservation);
         }

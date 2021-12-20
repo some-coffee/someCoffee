@@ -2,28 +2,28 @@ package com.example.some_coffee.Reservation;
 
 public class Form {
     private Reservation reservation;
-    private Long user_id;
-    private Long table_id;
+    private Long userId;
+    private Long tableId;
 
     public Form() {
     }
 
-    public Form(Reservation reservation, Long user_id, Long table_id) {
+    public Form(Reservation reservation, Long userId, Long tableId) {
         this.reservation = reservation;
-        this.user_id = user_id;
-        this.table_id = table_id;
+        this.userId = userId;
+        this.tableId = tableId;
     }
 
     public Reservation getReservation() {
         return reservation;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public Long getTable_id() {
-        return table_id;
+    public Long getTableId() {
+        return tableId;
     }
 
 }

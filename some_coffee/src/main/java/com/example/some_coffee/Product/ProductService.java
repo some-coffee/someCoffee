@@ -7,7 +7,7 @@ import java.util.List;
 
 @Service
 public class ProductService {
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     @Autowired
     public ProductService(ProductRepository productRepository) {
@@ -21,8 +21,8 @@ public class ProductService {
     }
 
     public Product getProduct(String id) {
-        Long product_id = Long.parseLong(id);
-        return productRepository.findById(product_id).orElse(null);
+        Long productId = Long.parseLong(id);
+        return productRepository.findById(productId).orElse(null);
     }
 
     public Product addProduct(Product product) {
@@ -30,18 +30,19 @@ public class ProductService {
     }
 
     public void deleteProduct(String id) {
-        Long product_id = Long.parseLong(id);
-        productRepository.deleteById(product_id);
+        Long productId = Long.parseLong(id);
+        productRepository.deleteById(productId);
     }
 
     public void updateProduct(String id, Product data) {
-        Long product_id = Long.parseLong(id);
-        Product product = productRepository.findById(product_id).orElse(null);
+        Long productId = Long.parseLong(id);
+        Product product = productRepository.findById(productId).orElse(null);
 
 
         if (product != null) {
             product.setName(data.getName());
             product.setPrice(data.getPrice());
+            product.setCost(data.getCost());
             product.setCategory(data.getCategory());
             productRepository.save(product);
         }

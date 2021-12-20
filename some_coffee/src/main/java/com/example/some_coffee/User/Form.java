@@ -1,14 +1,14 @@
 package com.example.some_coffee.User;
 
-class Form {
+public class Form {
     private User user;
-    private Long role_id;
+    private Long roleId;
 
     public User getUser() {
         return user;
     }
 
-    public Long getRole_id() {
-        return role_id;
+    public Long getRoleId() {
+        return roleId;
     }
 }

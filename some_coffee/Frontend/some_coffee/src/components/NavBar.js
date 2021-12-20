@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 function NavBar() {
   return (
     <div>
+      <div>
+        <br />
+        <img src="Images/instagram-icon.png" id="instagram" />
+      </div>
       <br />
       <br />
       <div className="topnav">

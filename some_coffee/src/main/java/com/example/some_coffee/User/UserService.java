@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-public class UserService  implements UserDetailsService {
+public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -31,7 +31,7 @@ public class UserService  implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        User user = userRepository.findByUser_name(userName);
+        User user = userRepository.findByUserName(userName);
         if (user == null) {
             throw new UsernameNotFoundException("User not found in the database");
         }
@@ -39,7 +39,7 @@ public class UserService  implements UserDetailsService {
         user.getRoles().forEach(role -> {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         });
-        return new org.springframework.security.core.userdetails.User(user.getUser_name(), user.getPassword(), authorities);
+        return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(), authorities);
 
     }
 
@@ -48,34 +48,35 @@ public class UserService  implements UserDetailsService {
     }
 
     public User getUser(String id) {
-        Long user_id = Long.parseLong(id);
-        return userRepository.findById(user_id).orElse(null);
+        Long userId = Long.parseLong(id);
+        return userRepository.findById(userId).orElse(null);
     }
 
 
     public User addUser(Form form) {
 
         User user = form.getUser();
-        Long roleId = form.getRole_id();
+        Long roleId = form.getRoleId();
         Role role = roleRepository.findById(roleId).orElse(null);
         user.getRoles().add(role);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
 
     }
+
     public void deleteUser(String id) {
-        Long user_id = Long.parseLong(id);
-        userRepository.deleteById(user_id);
+        Long userId = Long.parseLong(id);
+        userRepository.deleteById(userId);
     }
 
     public void updateUser(String id, User data) {
-        Long user_id = Long.parseLong(id);
-        User user = userRepository.findById(user_id).orElse(null);
+        Long userId = Long.parseLong(id);
+        User user = userRepository.findById(userId).orElse(null);
 
 
         if (user != null) {
             user.setName(data.getName());
-            user.setUser_name(data.getUser_name());
+            user.setUserName(data.getUserName());
             user.setPassword(data.getPassword());
             user.setAge(data.getAge());
             user.setPhone(data.getPhone());

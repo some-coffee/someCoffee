@@ -7,23 +7,23 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long roleId;
     private String name;
 
     public Role() {
     }
 
-    public Role(Long id, String name) {
-        this.id = id;
+    public Role(Long roleId, String name) {
+        this.roleId = roleId;
         this.name = name;
     }
 
     public Long getId() {
-        return id;
+        return roleId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long roleId) {
+        this.roleId = roleId;
     }
 
     public String getName() {

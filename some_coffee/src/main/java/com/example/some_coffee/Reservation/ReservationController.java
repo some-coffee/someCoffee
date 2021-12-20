@@ -31,8 +31,8 @@ public class ReservationController {
 
     @PostMapping
     public Reservation addReservation(@RequestBody Form form) {
-        System.out.println(form.getUser_id());
-        return reservationService.addReservation(form.getReservation(), form.getUser_id(), form.getTable_id());
+        System.out.println(form.getUserId());
+        return reservationService.addReservation(form.getReservation(), form.getUserId(), form.getTableId());
     }
 
     @DeleteMapping("/{id}")

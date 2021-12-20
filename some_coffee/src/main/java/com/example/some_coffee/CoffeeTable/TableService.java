@@ -7,7 +7,7 @@ import java.util.List;
 
 @Service
 public class TableService {
-    private TableRepository tableRepository;
+    private final TableRepository tableRepository;
 
     @Autowired
     public TableService(TableRepository tableRepository) {
@@ -21,8 +21,8 @@ public class TableService {
     }
 
     public CoffeeTable getTable(String id) {
-        Long table_id = Long.parseLong(id);
-        return tableRepository.findById(table_id).orElse(null);
+        Long tableId = Long.parseLong(id);
+        return tableRepository.findById(tableId).orElse(null);
     }
 
     public CoffeeTable addTable(CoffeeTable coffeeTable) {
@@ -31,17 +31,17 @@ public class TableService {
     }
 
     public void deleteTable(String id) {
-        Long table_id = Long.parseLong(id);
-        tableRepository.deleteById(table_id);
+        Long tableId = Long.parseLong(id);
+        tableRepository.deleteById(tableId);
     }
 
     public void updateSection(String id, CoffeeTable data) {
-        Long table_id = Long.parseLong(id);
-        CoffeeTable coffeeTable = tableRepository.findById(table_id).orElse(null);
+        Long tableId = Long.parseLong(id);
+        CoffeeTable coffeeTable = tableRepository.findById(tableId).orElse(null);
 
 
         if (coffeeTable != null) {
-            coffeeTable.setTable_size(data.getTable_size());
+            coffeeTable.setTableSize(data.getTableSize());
             tableRepository.save(coffeeTable);
         }
     }

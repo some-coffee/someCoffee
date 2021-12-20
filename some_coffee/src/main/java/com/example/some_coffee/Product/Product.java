@@ -9,28 +9,38 @@ import javax.persistence.Id;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long product_id;
+    private Long productId;
     private String name;
     private double price;
+    private double cost;
     private String category;
 
     public Product() {
 
     }
 
-    public Product(Long product_id, String name, double price, String category) {
-        this.product_id = product_id;
+    public Product(Long productId, String name, double price, double cost, String category) {
+        this.productId = productId;
         this.name = name;
         this.price = price;
+        this.cost = cost;
         this.category = category;
     }
 
-    public Long getProduct_id() {
-        return product_id;
+    public double getCost() {
+        return cost;
     }
 
-    public void setProduct_id(Long product_id) {
-        this.product_id = product_id;
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public String getName() {
