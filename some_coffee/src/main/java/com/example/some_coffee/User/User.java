@@ -28,6 +28,11 @@ public class User {
 
     }
 
+    public User(String email,String password) {
+        this.password = password;
+        this.email = email;
+    }
+
     public User(Long userId, String name, String userName, String password, int age, int phone, String email) {
         this.userId = userId;
         this.name = name;
@@ -37,7 +42,6 @@ public class User {
         this.phone = phone;
         this.email = email;
     }
-
 
     public Long getUserId() {
         return userId;
