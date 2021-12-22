@@ -4,16 +4,15 @@ import com.example.some_coffee.CoffeeTable.CoffeeTable;
 import com.example.some_coffee.User.User;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reservation_id;
-    private String reservation_date;
-    private String reservation_time;
+    private Long reservationId;
+    private String reservationDate;
+    private String reservationTime;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -22,10 +21,10 @@ public class Reservation {
     User user;
 
 
-    public Reservation(Long reservation_id, String reservation_date, String reservation_time) {
-        this.reservation_id = reservation_id;
-        this.reservation_date = reservation_date;
-        this.reservation_time = reservation_time;
+    public Reservation(Long reservationId, String reservationDate, String reservationTime) {
+        this.reservationId = reservationId;
+        this.reservationDate = reservationDate;
+        this.reservationTime = reservationTime;
 
     }
 
@@ -33,29 +32,29 @@ public class Reservation {
 
     }
 
-    public Long getReservation_id() {
-        return reservation_id;
+    public Long getReservationId() {
+        return reservationId;
     }
 
-    public void setReservation_id(Long reservation_id) {
-        this.reservation_id = reservation_id;
+    public void setReservationId(Long reservationId) {
+        this.reservationId = reservationId;
     }
 
-    public String getReservation_date() {
-        return reservation_date;
+    public String getReservationDate() {
+        return reservationDate;
     }
 
-    public void setReservation_date(String reservation_date) {
+    public void setReservationDate(String reservationDate) {
 
-        this.reservation_date = reservation_date;
+        this.reservationDate = reservationDate;
     }
 
-    public String getReservation_time() {
-        return reservation_time;
+    public String getReservationTime() {
+        return reservationTime;
     }
 
-    public void setReservation_time(String reservation_time) {
-        this.reservation_time = reservation_time;
+    public void setReservationTime(String reservationTime) {
+        this.reservationTime = reservationTime;
     }
 
     public void setCoffeeTable(CoffeeTable coffeeTable) {

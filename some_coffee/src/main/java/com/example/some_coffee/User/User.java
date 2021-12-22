@@ -2,7 +2,6 @@ package com.example.some_coffee.User;
 
 
 import com.example.some_coffee.Role.Role;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,9 +13,9 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long user_id;
+    private Long userId;
     private String name;
-    private String user_name;
+    private String userName;
     private String password;
     private int age;
     private int phone;
@@ -29,23 +28,27 @@ public class User {
 
     }
 
-    public User(Long user_id, String name, String user_name, String password, int age, int phone, String email) {
-        this.user_id = user_id;
+    public User(String email,String password) {
+        this.password = password;
+        this.email = email;
+    }
+
+    public User(Long userId, String name, String userName, String password, int age, int phone, String email) {
+        this.userId = userId;
         this.name = name;
-        this.user_name = user_name;
+        this.userName = userName;
         this.password = password;
         this.age = age;
         this.phone = phone;
         this.email = email;
     }
 
-
-    public Long getUser_id() {
-        return user_id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getName() {
@@ -56,12 +59,12 @@ public class User {
         this.name = name;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUserName(String user_name) {
+        this.userName = user_name;
     }
 
     public String getPassword() {

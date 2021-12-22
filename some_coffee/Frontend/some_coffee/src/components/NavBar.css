@@ -6,8 +6,8 @@
   border-bottom-left-radius: 30px;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
-  margin-right: 10%;
-  margin-left: 10%;
+  margin-right: 20%;
+  margin-left: 20%;
 }
 
 .topnav a {
@@ -26,4 +26,9 @@
 
 .topnav a.active {
   color: rgb(0, 0, 0);
+}
+
+#instagram {
+  float: left;
+  margin-left: 5%;
 }

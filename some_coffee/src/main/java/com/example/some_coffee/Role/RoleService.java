@@ -24,19 +24,19 @@ public class RoleService {
     }
 
     public Role getRole(String id) {
-        Long role_id = Long.parseLong(id);
-        return roleRepository.findById(role_id).orElse(null);
+        Long roleId = Long.parseLong(id);
+        return roleRepository.findById(roleId).orElse(null);
     }
 
     public void deleteRole(String id) {
         //if problem occurred check here
-        Long role_id = Long.parseLong(id);
-        roleRepository.deleteById(role_id);
+        Long roleId = Long.parseLong(id);
+        roleRepository.deleteById(roleId);
     }
 
     public void updateRole(String id, Role data) {
-        Long role_id = Long.parseLong(id);
-        Role role = roleRepository.findById(role_id).orElse(null);
+        Long roleId = Long.parseLong(id);
+        Role role = roleRepository.findById(roleId).orElse(null);
 
 
         if (role != null) {

@@ -9,31 +9,31 @@ import javax.persistence.Id;
 public class CoffeeTable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long table_id;
-    private int table_size;
+    private Long tableId;
+    private int tableSize;
 
     public CoffeeTable() {
 
     }
 
-    public CoffeeTable(Long table_id, int table_size) {
-        this.table_id = table_id;
-        this.table_size = table_size;
+    public CoffeeTable(Long tableId, int tableSize) {
+        this.tableId = tableId;
+        this.tableSize = tableSize;
     }
 
-    public Long getTable_id() {
-        return table_id;
+    public Long getTableId() {
+        return tableId;
     }
 
-    public void setTable_id(Long table_id) {
-        this.table_id = table_id;
+    public void setTableId(Long tableId) {
+        this.tableId = tableId;
     }
 
-    public int getTable_size() {
-        return table_size;
+    public int getTableSize() {
+        return tableSize;
     }
 
-    public void setTable_size(int table_size) {
-        this.table_size = table_size;
+    public void setTableSize(int tableSize) {
+        this.tableSize = tableSize;
     }
 }

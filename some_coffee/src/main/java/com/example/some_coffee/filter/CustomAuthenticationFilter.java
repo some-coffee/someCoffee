@@ -44,7 +44,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
         }
 
         // User information that will be used to authenticate
-        String username = user.getUser_name();
+        String username = user.getUserName();
         String password = user.getPassword();
 
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password);
