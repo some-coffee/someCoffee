@@ -6,6 +6,7 @@ import SignUp from "./components/SignUp";
 import Admin from "./components/Admin";
 import About from "./components/About";
 import Product from "./components/Product";
+import Menu from "./components/Menu";
 import { Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/About" element={<About />} />
           <Route path="/Admin" element={<Admin />} />
           <Route path="/Product" element={<Product />} />
+          <Route path="/Menu" element={<Menu />} />
         </Routes>
       </div>
     </div>
