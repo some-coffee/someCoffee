@@ -1,5 +1,28 @@
 import "./Menu.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 function Menu() {
+  const navigate = useNavigate();
+  const details = () => {
+    navigate("/MenuDetails");
+  };
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/product`)
+      .then((res) => {
+        setProducts(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div>
       <h1>Menu page</h1>
@@ -34,7 +57,7 @@ function Menu() {
 
         <div className="menuItems">
           <div>
-            <img src="Images/coffee-cup.jpg" id="coffee" />
+            <img src="Images/coffee-cup.jpg" id="coffee" onClick={details} />
             <h3>Morning coffee</h3>
           </div>
           <div>
@@ -43,6 +66,14 @@ function Menu() {
           </div>
         </div>
       </div>
+
+      {products.map((product) => (
+        <div key={product.productId}>
+          <Link to={`/MenuDetails/${product.productId}`}>
+            <h2> {product.name} </h2>
+          </Link>
+        </div>
+      ))}
     </div>
   );
 }

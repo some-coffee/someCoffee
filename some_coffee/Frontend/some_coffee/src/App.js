@@ -7,6 +7,8 @@ import Admin from "./components/Admin";
 import About from "./components/About";
 import Product from "./components/Product";
 import Menu from "./components/Menu";
+import MenuDetails from "./components/MenuDetails";
+
 import { Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
           <Route path="/Admin" element={<Admin />} />
           <Route path="/Product" element={<Product />} />
           <Route path="/Menu" element={<Menu />} />
+          <Route path="/MenuDetails/:id" element={<MenuDetails />} />
         </Routes>
       </div>
     </div>
